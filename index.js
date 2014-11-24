@@ -3,7 +3,7 @@ var express = require('express'),
 
 app.use('/', express.static(__dirname + '/public'));
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 1337;
 var host = "0.0.0.0";
 
 app.listen(port, host, function () {

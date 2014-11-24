@@ -17,3 +17,8 @@ textarea {
 textarea + div {
 	text-align: center;
 }
+
+article {
+	padding: 20px;
+	padding: 2.0rem;
+}
