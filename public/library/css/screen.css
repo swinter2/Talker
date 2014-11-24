@@ -1,0 +1,19 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+html {
+	font-size: 62.5%;
+}
+
+body, * {
+	font-size: 16px;
+	font-family: Ubuntu, sans-serif;
+}
+
+textarea {
+	display: block;
+	width: 100%;
+}
+
+textarea + div {
+	text-align: center;
+}
