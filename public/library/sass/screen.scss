@@ -89,6 +89,25 @@ article {
 		margin-bottom: .5em;
 	}
 }
+.said {
+
+	h2 {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	p {
+		display: block;
+	}
+
+	.button.clear {
+		display: inline-block;
+		vertical-align: bottom;
+		@include font-size(1.6);
+		@include rem(margin-left, 3);
+		padding: .2em;
+	}
+}
 
 footer {
 	color: lighten($gray, 15%);

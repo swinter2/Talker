@@ -31,10 +31,10 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	};
 
 	$scope.sayIt = function (e, phrase) {
-		e.preventDefault();
+		e && e.preventDefault();
 		speechSynthesis.cancel();
 
-		if (!phrase) {
+		if (!phrase && $scope.text) {
 			if ($scope.phrases.indexOf($scope.text) < 0) {
 				$scope.phrases.push($scope.text);
 			}
@@ -48,8 +48,8 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	};
 
 	$scope.removePhrase = function (e, phrase) {
-		e.preventDefault();
-		e.stopPropagation();
+		e && e.preventDefault();
+		e && e.stopPropagation();
 
 		if (!confirm("Delete this phrase?")) {
 			return;
@@ -63,6 +63,14 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 
 	$scope.chooseVoice = function(voice) {
 		$scope.voice = voice;
+
+		$scope.sayIt(null, $scope.said);
+	};
+
+	$scope.clearSaid = function () {
+
+		$scope.said = '';
+
 	};
 
 }]);

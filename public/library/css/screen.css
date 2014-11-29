@@ -486,6 +486,23 @@ article {
   margin-bottom: .5em;
 }
 
+.said h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.said p {
+  display: block;
+}
+.said .button.clear, .said button.clear {
+  display: inline-block;
+  vertical-align: bottom;
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-left: 48px;
+  margin-left: 3rem;
+  padding: .2em;
+}
+
 footer {
   color: #595959;
   padding: 32px;

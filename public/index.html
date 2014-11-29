@@ -19,7 +19,9 @@
 	<button ng-click="sayIt($event)">Talk</button>
 
 	<div class="said" ng-show="!!said">
-		<h2>Just said in the "{{ voice.name }}" voice:</h2><p>{{ said }}</p>
+		<h2>Just said in the "{{ voice.name }}" voice:</h2>
+		<button class="clear" ng-click="clearSaid()">Clear</button>
+		<p>{{ said }}</p>
 	</div>
 
 	<div class="phrases" ng-show="phrases.length > 0">
