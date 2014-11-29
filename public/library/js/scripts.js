@@ -1,46 +1,34 @@
-TalkerController = (function ($) {
+talker = angular.module('Talker', []);
 
-	var supported = false, 
-		ss,
-		button,
-		textarea,
-		msg, 
-		voice;
+talker.controller('TalkerController', ['$scope', function ($scope) {
 
-	function onDocReady() {
-		button = $("button");
-		textarea = $("textarea");
-		supported = window.speechSynthesis && SpeechSynthesisUtterance;
+	$scope.text = '';
+	$scope.supported = !!window.speechSynthesis;
+	$scope.voices = [];
+	$scope.phrases = [];
+	$scope.voice;
 
-		if (!supported) {
-			console.error("No speech synthesis supported in this browser.");
-			button.add(textarea).hide();
-			textarea.after("No speech synthesis supported in this browser.");
-			return;
+	var speechSynthesis = window.speechSynthesis;
+
+	speechSynthesis.onvoiceschanged = function () {
+		$scope.$apply(function ($s) {
+			$s.voices = speechSynthesis.getVoices();
+		});
+	};
+
+	$scope.sayIt = function (phrase) {
+		if (!phrase) {
+			if ($scope.phrases.indexOf($scope.text) < 0) {
+				$scope.phrases.push($scope.text);	
+			}
 		}
-		ss = window.speechSynthesis;
+		var msg = new SpeechSynthesisUtterance(phrase || $scope.text);
+		msg.voice = $scope.voice;
+		speechSynthesis.speak(msg);
+	};
 
-		button.on('click', sayIt);
-		ss.onvoiceschanged = function () {
-			ss.getVoices().forEach(function (voice) {
-				console.log(voice.name);
-			});
-			voice = ss.getVoices().filter(function (voice) {
-				// return voice.name === 'Hysterical';
-				return voice.name === 'Google UK English Male';
-				// return voice.name === 'Google Deutsch';
-			})[0];
-			console.log(voice);
-		};
-	}
+	$scope.chooseVoice = function(voice) {
+		$scope.voice = voice;
+	};
 
-	function sayIt() {
-		msg = new SpeechSynthesisUtterance(textarea.val());
-		msg.voice = voice;
-		ss.speak(msg);
-	}
-
-	$(onDocReady);
-	return {};
-
-})(jQuery);
+}]);

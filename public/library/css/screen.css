@@ -412,18 +412,13 @@ textarea {
   padding: 16px;
   padding: 1rem;
   width: 75%;
-  min-height: 300px;
+  min-height: 200px;
   display: inline-block;
   vertical-align: top;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
   border-radius: 4px;
-}
-textarea + div {
-  text-align: center;
-  display: inline-block;
-  vertical-align: top;
 }
 
 button {
@@ -446,8 +441,20 @@ button:hover {
   background-color: #d8d8d8;
   border: 1px solid #0d0d0d;
 }
+button.active {
+  background-color: yellow;
+}
 
 article {
   padding: 32px;
   padding: 2rem;
+}
+
+.voices {
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+.voices button {
+  font-size: 20px;
+  font-size: 2rem;
 }
