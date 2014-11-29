@@ -11,19 +11,25 @@
 </head>
 <body ng-cloak ng-controller="TalkerController">
 <article ng-hide="supported">
-	<p>No speech synthesis supported in this browser.</p>
+	<p>Sorry, there is no speech synthesis supported in this browser.  Please try again using <a target="_blank" href="http://www.google.com/chrome">Google Chrome</a>.</p>
 </article>
 <article ng-show="supported">
 
 	<textarea ng-model="text"></textarea>
-	<button ng-click="sayIt()">Say It</button>
+	<button ng-click="sayIt($event)">Talk</button>
 
-	<div class="phrases">
-		<button ng-repeat="p in phrases" ng-click="sayIt(p)">{{ p }}</button>
+	<div class="said" ng-show="!!said">
+		<h2>Just said:</h2><p>{{ said }}</p>
+	</div>
+
+	<div class="phrases" ng-show="phrases.length > 0">
+		<h2>Quick Phrases</h2>
+		<a href="#" class="button" ng-repeat="p in phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
 	</div>
 
 	<div class="voices">
-		<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v === voice }"></button>
+		<h2>Voices</h2>
+		<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
 	</div>
 
 </article>	
