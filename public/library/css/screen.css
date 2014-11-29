@@ -485,3 +485,9 @@ article {
   font-size: 2rem;
   margin-bottom: .5em;
 }
+
+footer {
+  color: #595959;
+  padding: 32px;
+  padding: 2rem;
+}

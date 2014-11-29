@@ -89,3 +89,8 @@ article {
 		margin-bottom: .5em;
 	}
 }
+
+footer {
+	color: lighten($gray, 15%);
+	@include rem(padding, 2);
+}

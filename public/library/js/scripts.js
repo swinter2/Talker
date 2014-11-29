@@ -26,11 +26,14 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	speechSynthesis.onvoiceschanged = function () {
 		$scope.$apply(function ($s) {
 			$s.voices = speechSynthesis.getVoices();
+			$s.voice = $s.voices[0];
 		});
 	};
 
 	$scope.sayIt = function (e, phrase) {
 		e.preventDefault();
+		speechSynthesis.cancel();
+
 		if (!phrase) {
 			if ($scope.phrases.indexOf($scope.text) < 0) {
 				$scope.phrases.push($scope.text);
@@ -47,6 +50,11 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.removePhrase = function (e, phrase) {
 		e.preventDefault();
 		e.stopPropagation();
+
+		if (!confirm("Delete this phrase?")) {
+			return;
+		}
+
 		var i = $scope.phrases.indexOf(phrase);
 		if (i > -1) {
 			$scope.phrases.splice(i, 1);

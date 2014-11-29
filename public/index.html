@@ -15,11 +15,11 @@
 </article>
 <article ng-show="supported">
 
-	<textarea ng-model="text"></textarea>
+	<textarea ng-model="text" placeholder="Enter phrase"></textarea>
 	<button ng-click="sayIt($event)">Talk</button>
 
 	<div class="said" ng-show="!!said">
-		<h2>Just said:</h2><p>{{ said }}</p>
+		<h2>Just said in the "{{ voice.name }}" voice:</h2><p>{{ said }}</p>
 	</div>
 
 	<div class="phrases" ng-show="phrases.length > 0">
@@ -32,6 +32,10 @@
 		<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
 	</div>
 
-</article>	
+</article>
+
+<footer>
+	<p>Written by <a href="http://www.winterific.com/">Sam Winter</a></p>
+</footer>
 </body>
 </html>
