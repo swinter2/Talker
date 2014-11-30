@@ -8,6 +8,11 @@ $off-white: #fefefe;
 $blue: #3580ba;
 $red: #8f2020;
 
+*, *:before, *:after {
+	outline: none;
+	@include box-sizing;
+}
+
 html {
 	font-size: 62.5%;
 }
@@ -18,7 +23,7 @@ body, * {
 }
 
 textarea {
-	@include font-size(2.8);
+	@include font-size(2.4);
 	@include rem(padding, 1);
 	width: 75%;
 	min-height: 140px;
@@ -27,14 +32,21 @@ textarea {
 
 	@include border-radius(4px);
 }
+select {
+	@include font-size(2.4);
+
+	option {
+	}
+}
 .button {
 	display: inline-block;
 	vertical-align: top;
-	@include font-size(2.8);
+	@include font-size(2.4);
 	@include rem(padding, 1);
+	@include rem(margin-right, 1);
 	text-decoration: none;
 	position: relative;
-	outline: none;
+	
 
 	color: $gray;
 	background-color: $off-white;
@@ -54,9 +66,9 @@ textarea {
 		border-color: $blue;
 	}
 
-	& + .button {
-		@include rem(margin-left, 1);
-	}
+	// & + .button {
+	// 	@include rem(margin-left, 1);
+	// }
 
 	> .delete {
 		@include font-size(1.0);
@@ -85,7 +97,7 @@ article {
 	border-top: 1px dashed $gray;
 
 	.button {
-		@include font-size(2.0);
+		@include font-size(1.6);
 		margin-bottom: .5em;
 	}
 }

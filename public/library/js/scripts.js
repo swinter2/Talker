@@ -63,8 +63,7 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 
 	$scope.chooseVoice = function(voice) {
 		$scope.voice = voice;
-
-		$scope.sayIt(null, $scope.said);
+		// $scope.sayIt(null, $scope.said);
 	};
 
 	$scope.clearSaid = function () {
