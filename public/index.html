@@ -20,9 +20,10 @@
 
 	<textarea ng-model="text" placeholder="Enter phrase"></textarea>
 	<button ng-click="sayIt($event)">Talk</button>
+	<button ng-click="clearText()">Clear</button>
 
 	<div class="said" ng-show="!!said">
-		<h2>Just said <span ng-show="!!voice">in the "{{ voice.name }}" voice:</span></h2>
+		<h2>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span></h2>
 		<button class="clear" ng-click="clearSaid()">Clear</button>
 		<p>{{ said }}</p>
 	</div>

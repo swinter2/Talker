@@ -20,8 +20,10 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.voices = [];
 	$scope.phrases = phrases;
 	$scope.voice;
+	$scope.previousVoice;
 
-	var speechSynthesis = window.speechSynthesis;
+	var speechSynthesis = window.speechSynthesis, 
+		msg = new SpeechSynthesisUtterance();
 
 	speechSynthesis.onvoiceschanged = function () {
 		$scope.$apply(function ($s) {
@@ -41,7 +43,9 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		}
 
 		var txt = phrase || $scope.text;
-		var msg = new SpeechSynthesisUtterance(txt);
+		// var msg = new SpeechSynthesisUtterance(txt);
+		msg.text = txt;
+		$scope.previousVoice = $scope.voice;
 		msg.voice = $scope.voice;
 		speechSynthesis.speak(msg);
 		$scope.said = txt;
@@ -62,6 +66,7 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	};
 
 	$scope.chooseVoice = function(voice) {
+		// $scope.previousVoice = $scope.voice;
 		$scope.voice = voice;
 		// $scope.sayIt(null, $scope.said);
 	};
@@ -70,6 +75,10 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 
 		$scope.said = '';
 
+	};
+
+	$scope.clearText = function () {
+		$scope.text = '';
 	};
 
 }]);
