@@ -23,9 +23,8 @@
 	<button ng-click="clearText()">Clear</button>
 
 	<div class="said" ng-show="!!said">
-		<span>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span></span>
+		<span>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span> "{{ said }}"</span>
 		<button class="clear" ng-click="clearSaid()">Clear</button>
-		<p>{{ said }}</p>
 	</div>
 
 	<div class="phrases" ng-show="phrases.length > 0">

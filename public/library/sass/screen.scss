@@ -2,15 +2,6 @@
 @import "mixins";
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
-// /* GRID SETUP
-// ----------------------------------------------------------------------------------*/
-
-// $total-columns  : 12;
-// $column-width   : 4em;
-// $gutter-width   : 1em;
-// $grid-padding   : $gutter-width;
-// // $show-grid-backgrounds  : true;
-
 $gray: #333;
 $white: #fff;
 $off-white: #fefefe;
@@ -74,10 +65,6 @@ select {
 		border-color: $blue;
 	}
 
-	// & + .button {
-	// 	@include rem(margin-left, 1);
-	// }
-
 	> .delete {
 		@include font-size(1.0);
 		display: block;
@@ -122,9 +109,9 @@ article {
 
 	.button.clear {
 		display: inline-block;
-		vertical-align: bottom;
+		vertical-align: middle;
 		@include font-size(1.6);
-		@include rem(margin-left, 3);
+		margin: .5em;
 		padding: .2em;
 	}
 }
@@ -133,6 +120,9 @@ article {
 	display: inline-block;
 	vertical-align: top;
 	width: 48%;
+}
+.said {
+	padding: 1em 0 0;
 }
 .phrases {
 	margin-right: 1%;

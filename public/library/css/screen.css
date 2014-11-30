@@ -505,11 +505,10 @@ article {
 }
 .said .button.clear, .said button.clear {
   display: inline-block;
-  vertical-align: bottom;
+  vertical-align: middle;
   font-size: 16px;
   font-size: 1.6rem;
-  margin-left: 48px;
-  margin-left: 3rem;
+  margin: .5em;
   padding: .2em;
 }
 
@@ -517,6 +516,10 @@ article {
   display: inline-block;
   vertical-align: top;
   width: 48%;
+}
+
+.said {
+  padding: 1em 0 0;
 }
 
 .phrases {
