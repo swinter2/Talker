@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     sass: {                              // Task
       dist: {                            // Target
         options: {                       // Target options
+          // require: ['compass', 'susy'],
           style: 'expanded'
         },
         // files: {                         // Dictionary of files

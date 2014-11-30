@@ -442,13 +442,12 @@ select {
   font-size: 2.4rem;
   padding: 16px;
   padding: 1rem;
-  margin-right: 16px;
-  margin-right: 1rem;
+  margin-right: 1em;
   text-decoration: none;
   position: relative;
-  color: #333333;
+  color: #333;
   background-color: #fefefe;
-  border: 1px solid #333333;
+  border: 1px solid #333;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
@@ -460,7 +459,7 @@ select {
   border: 1px solid #0d0d0d;
 }
 .button.active, button.active {
-  color: white;
+  color: #fff;
   background-color: #3580ba;
   border-color: #3580ba;
 }
@@ -471,9 +470,9 @@ select {
   position: absolute;
   top: -1em;
   right: -1em;
-  color: white;
+  color: #fff;
   background-color: #8f2020;
-  border-color: white;
+  border-color: #fff;
   padding: .5em .7em;
   -webkit-border-radius: 18px;
   -moz-border-radius: 18px;
@@ -489,12 +488,12 @@ article {
 .said, .phrases, .voices {
   margin-top: 32px;
   margin-top: 2rem;
-  border-top: 1px dashed #333333;
+  border-top: 1px dashed #333;
 }
 .said .button, .said button, .phrases .button, .phrases button, .voices .button, .voices button {
   font-size: 16px;
   font-size: 1.6rem;
-  margin-bottom: .5em;
+  margin-bottom: 1em;
 }
 
 .said h2 {
@@ -514,8 +513,24 @@ article {
   padding: .2em;
 }
 
+.phrases, .voices {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+}
+
+.phrases {
+  margin-right: 1%;
+}
+
+.voices {
+  margin-left: 1%;
+}
+
 footer {
   color: #595959;
   padding: 32px;
   padding: 2rem;
 }
+
+/*# sourceMappingURL=screen.css.map */

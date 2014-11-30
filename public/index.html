@@ -23,7 +23,7 @@
 	<button ng-click="clearText()">Clear</button>
 
 	<div class="said" ng-show="!!said">
-		<h2>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span></h2>
+		<span>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span></span>
 		<button class="clear" ng-click="clearSaid()">Clear</button>
 		<p>{{ said }}</p>
 	</div>
@@ -31,9 +31,9 @@
 	<div class="phrases" ng-show="phrases.length > 0">
 		<h2>Quick Phrases</h2>
 		<a href="#" class="button" ng-repeat="p in phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
-	</div>
+	</div><!--
 
-	<div class="voices">
+	--><div class="voices">
 		<h2>Voices</h2>
 		<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
 	</div>

@@ -43,7 +43,6 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		}
 
 		var txt = phrase || $scope.text;
-		// var msg = new SpeechSynthesisUtterance(txt);
 		msg.text = txt;
 		$scope.previousVoice = $scope.voice;
 		msg.voice = $scope.voice;
@@ -66,15 +65,11 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	};
 
 	$scope.chooseVoice = function(voice) {
-		// $scope.previousVoice = $scope.voice;
 		$scope.voice = voice;
-		// $scope.sayIt(null, $scope.said);
 	};
 
 	$scope.clearSaid = function () {
-
 		$scope.said = '';
-
 	};
 
 	$scope.clearText = function () {
