@@ -1,22 +1,24 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    sass: {                              // Task
-      dist: {                            // Target
-        options: {                       // Target options
-          // require: ['compass', 'susy'],
-          style: 'expanded'
-        },
-        // files: {                         // Dictionary of files
-        //   'main.css': 'main.scss',       // 'destination': 'source'
-        //   'widgets.css': 'widgets.scss'
-        // }
-        files: [{
-          expand: true,
-          cwd: 'public/library/sass',
-          src: ['*.scss'],
-          dest: 'public/library/css',
-          ext: '.css'
-        }]
+    sass: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          'public/library/css/screen.css': 'public/library/sass/screen.scss'
+        }
+      }
+    },
+    express: {
+      options: {
+        // Override defaults here
+        port: 1337
+      },
+      dev: {
+        options: {
+          script: 'index.js'
+        }
       }
     },
     watch: {
@@ -25,8 +27,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-express-server');
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['express:dev', 'watch']);
 }
