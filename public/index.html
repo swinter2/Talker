@@ -18,7 +18,7 @@
 </article>
 <article ng-show="supported">
 
-	<textarea ng-model="text" placeholder="Enter phrase"></textarea>
+	<textarea ng-model="text" placeholder="Enter phrase" ng-keypress="onKeyPress($event)"></textarea>
 	<button ng-click="sayIt($event)">Talk</button>
 	<button ng-click="clearText()">Clear</button>
 

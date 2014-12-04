@@ -32,6 +32,14 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		});
 	};
 
+	$scope.onKeyPress = function (e) {
+		// If enter and the shift key is *not* down...
+		if (e.keyCode === 13 && !e.shiftKey) {
+			e.preventDefault();
+			$scope.sayIt();
+		}
+	}
+
 	$scope.sayIt = function (e, phrase) {
 		e && e.preventDefault();
 		speechSynthesis.cancel();
