@@ -1,8 +1,11 @@
 @import "normalize";
+@import "base";
 @import "mixins";
-@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+@import "grid";
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 
 $gray: #333;
+$light-gray: #cacaca;
 $white: #fff;
 $off-white: #fefefe;
 $blue: #3580ba;
@@ -19,8 +22,12 @@ html {
 
 body, * {
 	font-size: 16px;
-	font-family: Ubuntu, sans-serif;
+	font-family: Raleway, sans-serif;
 }
+
+// h1, h2, h3 {
+// 	font-family: Raleway, sans-serif;
+// }
 
 textarea {
 	@include font-size(2.4);
@@ -83,13 +90,23 @@ button {
 	@extend .button;
 }
 
-article {
+header, article, footer {
 	@include rem(padding, 2.0);
+}
+
+header {
+	h1 {
+		margin: 0;
+	}
+}
+
+.no-js article {
+	display: none;
 }
 
 .said, .phrases, .voices {
 	@include rem(margin-top, 2);
-	border-top: 1px dashed $gray;
+	border-top: 1px dotted $light-gray;
 
 	.button {
 		@include font-size(1.6);
@@ -119,19 +136,32 @@ article {
 .phrases, .voices {
 	display: inline-block;
 	vertical-align: top;
-	width: 48%;
+	width: col(6, 12);
 }
 .said {
 	padding: 1em 0 0;
 }
 .phrases {
-	margin-right: 1%;
+	margin-right: gutter(6, 12);
 }
 .voices {
-	margin-left: 1%;
+}
+
+@media screen and (max-width: $ipad-landscape) {
+	textarea {
+		display: block;
+		width: 100%;
+
+		& + .button {
+			@include rem(margin-top, 1);
+		}
+	}
+	.phrases, .voices {
+		width: 100%;
+		margin-right: 0;
+	}
 }
 
 footer {
-	color: lighten($gray, 15%);
-	@include rem(padding, 2);
+	color: lighten($gray, 20%);
 }

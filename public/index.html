@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="Talker">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="Talker"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="Talker"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="Talker"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="Talker"> <!--<![endif]-->
 <head>
 	<title>Talker</title>
 
 	<link rel="stylesheet" type="text/css" href="/library/css/screen.css">
+	<script src="/library/js/modernizr.custom.55491.js"></script>
 
 	<!-- <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script> -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
@@ -13,34 +17,41 @@
 	<script type="text/javascript" src="/library/js/scripts.js"></script>
 </head>
 <body ng-cloak ng-controller="TalkerController">
-<article ng-hide="supported">
-	<p>Sorry, there is no speech synthesis supported in this browser.  Please try again using <a target="_blank" href="http://www.google.com/chrome">Google Chrome</a>.</p>
-</article>
-<article ng-show="supported">
 
-	<textarea ng-model="text" placeholder="Enter phrase" ng-keypress="onKeyPress($event)"></textarea>
-	<button ng-click="sayIt($event)">Talk</button>
-	<button ng-click="clearText()">Clear</button>
+	<header><h1>Talker</h1></header>
 
-	<div class="said" ng-show="!!said">
-		<span>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span> "{{ said }}"</span>
-		<button class="clear" ng-click="clearSaid()">Clear</button>
-	</div>
+	<noscript>Javascript must be enabled for this app to work!</noscript>
 
-	<div class="phrases" ng-show="phrases.length > 0">
-		<h2>Quick Phrases</h2>
-		<a href="#" class="button" ng-repeat="p in phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
-	</div><!--
+	<article ng-hide="supported">
 
-	--><div class="voices">
-		<h2>Voices</h2>
-		<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
-	</div>
+		<p>Sorry, there is no speech synthesis supported in this browser.  Please try again using <a target="_blank" href="http://www.google.com/chrome">Google Chrome</a>.</p>
 
-</article>
+	</article>
+	<article ng-show="supported">
 
-<footer>
-	<p>Written by <a href="http://www.winterific.com/">Sam Winter</a></p>
-</footer>
+		<textarea ng-model="text" placeholder="Enter phrase" ng-keypress="onKeyPress($event)"></textarea>
+		<button ng-click="sayIt($event)">Talk</button>
+
+		<div class="said" ng-show="!!said">
+			<span>Just said <span ng-show="!!previousVoice">in the "{{ previousVoice.name }}" voice:</span> "{{ said }}"</span>
+			<button class="clear" ng-click="clearSaid()">Clear</button>
+		</div>
+
+		<div class="phrases" ng-show="phrases.length > 0">
+			<h2>Quick Phrases</h2>
+			<a href="#" class="button" ng-repeat="p in phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
+		</div><!--
+
+		--><div class="voices">
+			<h2>Voices</h2>
+			<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
+		</div>
+
+	</article>
+
+	<footer>
+		<p>Written by <a href="http://www.winterific.com/">Sam Winter</a></p>
+	</footer>
+
 </body>
 </html>
