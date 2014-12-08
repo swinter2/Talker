@@ -19,7 +19,7 @@ var phraseGroups = [
 		title: "Stephen Hawking", 
 		defaultVoice: 'Fred',
 		phrases: [
-			'black holes are awesome',
+			'Black holes are awesome.',
 			"e equals m c squared",
 		]
 	},

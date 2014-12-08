@@ -39,13 +39,16 @@
 
 		<div class="phrases" ng-show="phraseGroups.length > 0">
 			<h2>Phrases</h2>
-			<select ng-change="changePhraseGroup()" ng-model="phraseGroup" ng-options="pg.title for pg in phraseGroups"></select><br><br><br>
+			<label for="phraseGroup">Phrase Group:</label>
+			<select name='phraseGroup' ng-change="changePhraseGroup()" ng-model="phraseGroup" ng-options="pg.title for pg in phraseGroups"></select><br><br><br>
 
 			<a href="#" class="button" ng-repeat="p in phraseGroup.phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
 		</div><!--
 
 		--><div class="voices">
 			<h2>Voices</h2>
+			<select ng-model="voice" ng-options="v.name for v in voices"></select>
+
 			<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>
 		</div>
 
