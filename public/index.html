@@ -37,9 +37,11 @@
 			<button class="clear" ng-click="clearSaid()">Clear</button>
 		</div>
 
-		<div class="phrases" ng-show="phrases.length > 0">
-			<h2>Quick Phrases</h2>
-			<a href="#" class="button" ng-repeat="p in phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
+		<div class="phrases" ng-show="phraseGroups.length > 0">
+			<h2>Phrases</h2>
+			<select ng-change="changePhraseGroup()" ng-model="phraseGroup" ng-options="pg.title for pg in phraseGroups"></select><br><br><br>
+
+			<a href="#" class="button" ng-repeat="p in phraseGroup.phrases" ng-click="sayIt($event, p)">{{ p }}<span class="delete" ng-click="removePhrase($event, p)">X</span></a>
 		</div><!--
 
 		--><div class="voices">

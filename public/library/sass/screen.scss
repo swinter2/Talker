@@ -4,6 +4,8 @@
 @import "grid";
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
+$font: Raleway, sans-serif;
+
 $gray: #333;
 $light-gray: #cacaca;
 $white: #fff;
@@ -15,20 +17,16 @@ $red: #8f2020;
 	outline: none;
 	@include box-sizing;
 }
-
 html {
 	font-size: 62.5%;
 }
-
 body, * {
 	font-size: 16px;
-	font-family: Raleway, sans-serif;
+	font-family: $font;
 }
-
-// h1, h2, h3 {
-// 	font-family: Raleway, sans-serif;
-// }
-
+input, textarea, select {
+	font-family: $font;
+}
 textarea {
 	@include font-size(2.4);
 	@include rem(padding, 1);
@@ -43,6 +41,7 @@ select {
 	@include font-size(2.4);
 
 	option {
+		@include font-size(2.4);
 	}
 }
 .button {
@@ -132,7 +131,6 @@ header {
 		padding: .2em;
 	}
 }
-
 .phrases, .voices {
 	display: inline-block;
 	vertical-align: top;
@@ -145,9 +143,19 @@ header {
 	margin-right: gutter(6, 12);
 }
 .voices {
+	.button {
+		@include -grid-item;
+	}
+}
+footer {
+	color: lighten($gray, 20%);
 }
 
 @media screen and (max-width: $ipad-landscape) {
+	.button {
+		text-align: center;
+		@include grid-item(4, 12, 3);
+	}
 	textarea {
 		display: block;
 		width: 100%;
@@ -162,6 +170,18 @@ header {
 	}
 }
 
-footer {
-	color: lighten($gray, 20%);
+@media screen and (min-width: $iphone-landscape) and (max-width: $ipad-landscape) {
+	.voices {
+		.button {
+			@include grid-item(4, 12, 3);
+		}
+	}
+}
+
+@media screen and (max-width: $iphone-landscape) {
+	.button, .voices .button {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
 }

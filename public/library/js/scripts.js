@@ -1,14 +1,28 @@
 talker = angular.module('Talker', []);
 
-var phrases = [
-'Hi', 
-'Hello', 
-'How are you?',
-'I am well thank you.',
-'Good morning', 
-'Good evening',
-'Good night',
-'Okey dokey',
+var phraseGroups = [
+	{
+		title: "Default", 
+		defaultVoice: "Fred",
+		phrases: [
+			'Hi', 
+			'Hello', 
+			'How are you?',
+			'I am well thank you.',
+			'Good morning', 
+			'Good evening',
+			'Good night',
+			'Okey dokey',
+		]
+	},
+	{
+		title: "Stephen Hawking", 
+		defaultVoice: 'Fred',
+		phrases: [
+			'black holes are awesome',
+			"e equals m c squared",
+		]
+	},
 ];
 
 talker.controller('TalkerController', ['$scope', function ($scope) {
@@ -18,9 +32,11 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.supported = !!window.speechSynthesis;
 	if (!$scope.supported) return;
 	$scope.voices = [];
-	$scope.phrases = phrases;
 	$scope.voice;
 	$scope.previousVoice;
+
+	$scope.phraseGroups = phraseGroups
+	$scope.phraseGroup = $scope.phraseGroups[0];
 
 	var speechSynthesis = window.speechSynthesis, 
 		msg = new SpeechSynthesisUtterance();
@@ -29,6 +45,8 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		$scope.$apply(function ($s) {
 			$s.voices = speechSynthesis.getVoices();
 			$s.voice = $s.voices[0];
+
+			$s.changePhraseGroup();
 		});
 	};
 
@@ -45,8 +63,8 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		speechSynthesis.cancel();
 
 		if (!phrase && $scope.text) {
-			if ($scope.phrases.indexOf($scope.text) < 0) {
-				$scope.phrases.push($scope.text);
+			if ($scope.phraseGroup.phrases.indexOf($scope.text) < 0) {
+				$scope.phraseGroup.phrases.push($scope.text);
 			}
 		}
 
@@ -66,9 +84,23 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 			return;
 		}
 
-		var i = $scope.phrases.indexOf(phrase);
+		var i = $scope.phraseGroup.phrases.indexOf(phrase);
 		if (i > -1) {
-			$scope.phrases.splice(i, 1);
+			$scope.phraseGroup.phrases.splice(i, 1);
+		}
+	};
+
+	$scope.changePhraseGroup = function () {
+		if ($scope.phraseGroup.defaultVoice) {
+			if ($scope.voices) {
+				for (var i in $scope.voices) {
+					var voice = $scope.voices[i];
+					if (voice.name === $scope.phraseGroup.defaultVoice) {
+						$scope.chooseVoice(voice);
+						return;
+					}
+				}
+			}
 		}
 	};
 
