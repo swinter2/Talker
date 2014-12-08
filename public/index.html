@@ -47,6 +47,7 @@
 
 		--><div class="voices">
 			<h2>Voices</h2>
+			<p ng-show="voices.length === 0">No extra voices defined in this browser.  Using the default voice.</p>
 			<select ng-model="voice" ng-options="v.name for v in voices"></select>
 
 			<button ng-repeat="v in voices" ng-click="chooseVoice(v)" ng-bind="v.name" ng-class="{ active: v.name === voice.name }"></button>

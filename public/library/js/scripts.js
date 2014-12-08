@@ -45,7 +45,6 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 		$scope.$apply(function ($s) {
 			$s.voices = speechSynthesis.getVoices();
 			$s.voice = $s.voices[0];
-
 			$s.changePhraseGroup();
 		});
 	};
@@ -115,5 +114,12 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.clearText = function () {
 		$scope.text = '';
 	};
+
+	// Try to get the voices first synchronously for Safari's sake.
+	$scope.voices = speechSynthesis.getVoices();
+	if ($scope.voices && $scope.voices.length > 0) {
+		$scope.voice = $scope.voices[0];
+		$scope.changePhraseGroup();
+	}
 
 }]);
