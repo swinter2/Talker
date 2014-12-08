@@ -20,7 +20,7 @@ var phraseGroups = [
 		defaultVoice: 'Fred',
 		phrases: [
 			'black holes are awesome',
-			"e equals m c squared",
+			"ee equals m c squared",
 		]
 	},
 ];
