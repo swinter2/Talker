@@ -83,6 +83,10 @@ select {
 		padding: .5em .7em;
 
 		@include border-radius(18px);
+
+		&:hover {
+			background-color: lighten($red, 15%);
+		}
 	}
 }
 button {
@@ -168,20 +172,29 @@ footer {
 		width: 100%;
 		margin-right: 0;
 	}
-}
-
-@media screen and (min-width: $iphone-landscape) and (max-width: $ipad-landscape) {
-	.voices {
-		.button {
-			@include grid-item(4, 12, 3);
-		}
+	.voices .button {
+		display: none;
 	}
 }
 
+@media screen and (min-width: $iphone-landscape) and (max-width: $ipad-landscape) {
+	// .voices {
+	// 	.button {
+	// 		@include grid-item(4, 12, 3);
+	// 	}
+	// }
+}
+
 @media screen and (max-width: $iphone-landscape) {
-	.button, .voices .button {
+	.button {
 		display: block;
 		width: 100%;
 		text-align: center;
+	}
+}
+
+@media screen and (min-width: $ipad-landscape) {
+	.voices select {
+		display: none;
 	}
 }
