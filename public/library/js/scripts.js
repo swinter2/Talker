@@ -2,21 +2,21 @@ talker = angular.module('Talker', []);
 
 var phraseGroups = [
 	{
-		title: "Default", 
+		title: "Default",
 		defaultVoice: "Fred",
 		phrases: [
-			'Hi', 
-			'Hello', 
+			'Hi',
+			'Hello',
 			'How are you?',
 			'I am well thank you.',
-			'Good morning', 
+			'Good morning',
 			'Good evening',
 			'Good night',
 			'Okey dokey',
 		]
 	},
 	{
-		title: "Stephen Hawking", 
+		title: "Stephen Hawking",
 		defaultVoice: 'Fred',
 		phrases: [
 			'black holes are awesome',
@@ -38,10 +38,14 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.phraseGroups = phraseGroups
 	$scope.phraseGroup = $scope.phraseGroups[0];
 
-	var speechSynthesis = window.speechSynthesis, 
-		msg = new SpeechSynthesisUtterance();
+	var speechSynthesis = window.speechSynthesis,
+		msg = new SpeechSynthesisUtterance(),
+		voicesInitHappened = false;
 
 	speechSynthesis.onvoiceschanged = function () {
+		if (voicesInitHappened) return;
+
+		voicesInitHappened = true;
 		$scope.$apply(function ($s) {
 			$s.voices = speechSynthesis.getVoices();
 			$s.voice = $s.voices[0];
