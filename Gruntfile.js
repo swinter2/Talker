@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     express: {
       options: {
         // Override defaults here
-        port: 1337
+        port: 3000
       },
       dev: {
         options: {

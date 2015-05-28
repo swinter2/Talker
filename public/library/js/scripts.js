@@ -26,14 +26,20 @@ var phraseGroups = [
 ];
 
 talker.controller('TalkerController', ['$scope', function ($scope) {
-
-	$scope.text = '';
+	
+	var hashText = (window.location.hash || "").replace(/^#/g, '');
+	$scope.hashUsed = !!hashText;
+	$scope.text = hashText;
 	$scope.said = '';
 	$scope.supported = !!window.speechSynthesis;
 	if (!$scope.supported) return;
 	$scope.voices = [];
 	$scope.voice;
 	$scope.previousVoice;
+	$scope.$watch(function (scope) {
+		// console.log(scope.text);
+		window.location.hash = scope.text;
+	});
 
 	$scope.phraseGroups = phraseGroups
 	$scope.phraseGroup = $scope.phraseGroups[0];
@@ -124,6 +130,10 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	if ($scope.voices && $scope.voices.length > 0) {
 		$scope.voice = $scope.voices[0];
 		$scope.changePhraseGroup();
+	}
+	
+	if ($scope.hashUsed) {
+		$scope.sayIt();
 	}
 
 }]);
