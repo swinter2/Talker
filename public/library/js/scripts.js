@@ -27,7 +27,7 @@ var phraseGroups = [
 
 talker.controller('TalkerController', ['$scope', function ($scope) {
 	
-	var hashText = (window.location.hash || "").replace(/^#/g, '');
+	var hashText = (decodeURIComponent(window.location.hash || "")).replace(/^#/g, '');
 	$scope.hashUsed = !!hashText;
 	$scope.text = hashText;
 	$scope.said = '';
@@ -38,7 +38,7 @@ talker.controller('TalkerController', ['$scope', function ($scope) {
 	$scope.previousVoice;
 	$scope.$watch(function (scope) {
 		// console.log(scope.text);
-		window.location.hash = scope.text;
+		window.location.hash = encodeURIComponent(scope.text);
 	});
 
 	$scope.phraseGroups = phraseGroups
